@@ -1,6 +1,6 @@
 # Alex
 
-A pico-sized PHP framework
+A pico-sized PHP framework.
 
 ## Feature
 
