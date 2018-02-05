@@ -3,8 +3,14 @@ namespace Alex;
 
 class Router {
     private $routes = [];
+    private $route_base = '';
+
+    function __construct() {
+        $this->route_base = pathinfo($_SERVER['SCRIPT_NAME'], PATHINFO_DIRNAME);
+    }
 
     private function add($method, $path, $task) {
+        $path = $this->route_base . $path;
         if (!array_key_exists($method, $this->routes)) {
             $this->routes[$method] = [];
         }
