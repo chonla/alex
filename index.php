@@ -14,5 +14,16 @@ $r->get('/bb/:id', function($id) {
 $r->get('/cc/test', function() {
     return new Alex\PassThroughResponse('http://www.google.com');
 });
+$r->post('/cc/test', function() {
+    return new Alex\JsonResponse(201, (new Alex\JsonRequest())->toJson());
+});
+$r->put('/cc/test', function() {
+    return new Alex\JsonResponse(200, (new Alex\JsonRequest())->toJson());
+});
+$r->delete('/cc/test', function() {
+    return new Alex\JsonResponse(200, [
+        'message' => 'It works! Item has gone'
+    ]);
+});
 
 $r->go();

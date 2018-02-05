@@ -25,14 +25,34 @@ class Router {
         ];
     }
 
-    public function get($path, $task) {
-        $dispatch = $task;
+    private function create_dispatchable($task) {
+        $dispatchable = $task;
         if (!is_callable($task)) {
-            $dispatch = function() use ($task) {
+            $dispatchable = function() use ($task) {
                 return $task;
             };
         }
-        $this->add('GET', $path, $dispatch);
+        return $dispatchable;
+    }
+
+    public function get($path, $task) {
+        $dispatchable = $this->create_dispatchable($task);
+        $this->add('GET', $path, $dispatchable);
+    }
+
+    public function post($path, $task) {
+        $dispatchable = $this->create_dispatchable($task);
+        $this->add('POST', $path, $dispatchable);
+    }
+
+    public function put($path, $task) {
+        $dispatchable = $this->create_dispatchable($task);
+        $this->add('PUT', $path, $dispatchable);
+    }
+
+    public function delete($path, $task) {
+        $dispatchable = $this->create_dispatchable($task);
+        $this->add('DELETE', $path, $dispatchable);
     }
 
     public function go() {
