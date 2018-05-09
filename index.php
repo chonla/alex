@@ -25,5 +25,8 @@ $r->delete('/cc/test', function() {
         'message' => 'It works! Item has gone'
     ]);
 });
+$r->options('/cc/test', function() {
+    return new Alex\JsonResponse(200);
+});
 
 $r->go();

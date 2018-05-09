@@ -62,6 +62,11 @@ class Router {
         $this->add('DELETE', $path, $dispatchable);
     }
 
+    public function options($path, $task) {
+        $dispatchable = $this->create_dispatchable($task);
+        $this->add('OPTIONS', $path, $dispatchable);
+    }
+
     public function go() {
         $response = null;
         $method = $_SERVER['REQUEST_METHOD'];
