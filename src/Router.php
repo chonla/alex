@@ -15,6 +15,7 @@ class Router {
 
     private function add($method, $path, $task) {
         $path = $this->route_base . $path;
+        $path = str_replace("//", "/", $path);
         $is_reg = false;
         if (preg_match('@:[^/]+@', $path) === 1) {
             $is_reg = true;
