@@ -82,7 +82,7 @@ class Router {
             } elseif ($v['is_reg'] && (preg_match($v['pattern'], $uri, $matches) === 1)) {
                 $params = [];
                 foreach ($v['params'] as $param) {
-                    $params[] = $args[$param];
+                    $params[] = $matches[$param];
                 }
                 $response = call_user_func_array($v['task'], $params);
                 break;
