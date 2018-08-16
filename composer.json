@@ -1,5 +1,5 @@
 {
-    "name": "Alex",
+    "name": "chonla/alex",
     "version": "0.1.0",
     "description": "A pico-sized PHP framework.",
     "autoload": {
