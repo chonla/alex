@@ -2,6 +2,12 @@
     "name": "chonla/alex",
     "version": "0.1.0",
     "description": "A pico-sized PHP framework.",
+    "license": "MIT",
+    "authors": [{
+        "name": "Chonlasith Jucksriporn",
+        "email": "chonlasith@gmail.com"
+    }],
+    "require": {},
     "autoload": {
         "psr-4": {
             "Alex\\": "src/"
