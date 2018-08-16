@@ -3,6 +3,11 @@
 require 'vendor/autoload.php';
 
 $r = new Alex\Router();
+
+$r->cors([
+    'Access-Control-Allow-Origin' => '*',
+]);
+
 $r->get('/', 'hello');
 $r->get('/aa', 'hello 2');
 $r->get('/bb', 'hello 3');

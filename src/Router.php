@@ -4,6 +4,7 @@ namespace Alex;
 class Router {
     private $routes = [];
     private $route_base = '';
+    private $global_cors = [];
 
     function __construct() {
         $this->route_base = pathinfo($_SERVER['SCRIPT_NAME'], PATHINFO_DIRNAME);
@@ -11,6 +12,10 @@ class Router {
         $this->routes['POST'] = [];
         $this->routes['PUT'] = [];
         $this->routes['DELETE'] = [];
+    }
+
+    public function cors($headers = []) {
+        $this->global_cors = array_merge($this->global_cors, $headers);
     }
 
     private function add($method, $path, $task) {
@@ -87,6 +92,10 @@ class Router {
                 $response = call_user_func_array($v['task'], $params);
                 break;
             }
+        }
+
+        foreach ($this->global_cors as $header_name => $header_value) {
+            header(sprintf("%s: %s", $header_name, $header_value));
         }
         echo $response;
     }
